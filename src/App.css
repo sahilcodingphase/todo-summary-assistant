@@ -5,14 +5,16 @@
 /* Custom styles */
 .todo-app {
   min-height: 100vh;
-  background: linear-gradient(135deg, #f0f9ff 0%, #f5f0ff 100%);
+  background: linear-gradient(135deg, #e0f2fe 0%, #ede9fe 100%);
+  font-family: 'Inter', sans-serif;
+  color: #1f2937; /* Darker text for better readability */
 }
 
 /* Custom animations */
 @keyframes fadeIn {
   from {
     opacity: 0;
-    transform: translateY(10px);
+    transform: translateY(12px);
   }
   to {
     opacity: 1;
@@ -21,66 +23,101 @@
 }
 
 .animate-fadeIn {
-  animation: fadeIn 0.3s ease-out;
+  animation: fadeIn 0.35s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
 
 /* Custom scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 10px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #f1f1f1;
+  background: #f3f4f6;
+  border-radius: 6px;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #888;
-  border-radius: 4px;
+  background: #60a5fa; /* Blue-400 */
+  border-radius: 6px;
+  border: 2px solid #f3f4f6;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #555;
+  background: #2563eb; /* Blue-600 */
 }
 
 /* Custom focus styles */
 .focus-ring:focus {
   outline: none;
-  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.5);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.6);
+  border-radius: 0.375rem; /* 6px */
 }
 
 /* Custom button styles */
 .btn {
-  transition: all 0.2s ease-in-out;
+  background-color: #3b82f6;
+  color: white;
+  padding: 0.625rem 1.25rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  box-shadow: 0 2px 6px rgba(59, 130, 246, 0.4);
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  user-select: none;
 }
 
-.btn:hover {
+.btn:hover,
+.btn:focus {
+  background-color: #2563eb;
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.6);
   transform: translateY(-2px);
+  outline: none;
 }
 
 /* Custom input styles */
 .input {
-  transition: all 0.2s ease-in-out;
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 2px solid #d1d5db; /* gray-300 */
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .input:focus {
-  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.5);
-  border-color: transparent;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3);
+  outline: none;
+  background-color: white;
 }
 
 /* Custom card styles */
 .card {
   background: white;
-  border-radius: 0.75rem;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-  border: 1px solid #e5e7eb;
+  border-radius: 1rem;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e0e7ff;
   overflow: hidden;
+  padding: 1.5rem;
+  transition: box-shadow 0.3s ease;
+}
+
+.card:hover {
+  box-shadow: 0 20px 40px rgba(59, 130, 246, 0.25);
 }
 
 /* Custom header styles */
 .header {
-  background: linear-gradient(to right, #3b82f6, #8b5cf6);
-  padding: 1.5rem;
+  background: linear-gradient(90deg, #3b82f6 0%, #8b5cf6 100%);
+  padding: 1.75rem 2rem;
   text-align: center;
+  color: white;
+  font-size: 1.5rem;
+  font-weight: 700;
+  user-select: none;
+  letter-spacing: 0.05em;
+  border-radius: 1rem 1rem 0 0;
+  box-shadow: 0 5px 15px rgba(59, 130, 246, 0.5);
 }
 
 /* Custom todo item styles */
@@ -88,110 +125,135 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 1rem;
+  padding: 1rem 1.25rem;
   background: white;
-  border-radius: 0.5rem;
-  border: 1px solid #e5e7eb;
-  transition: all 0.2s ease-in-out;
+  border-radius: 0.75rem;
+  border: 1.5px solid #e0e7ff;
+  transition: box-shadow 0.25s ease, transform 0.25s ease, border-color 0.25s ease;
+  cursor: pointer;
+  user-select: none;
 }
 
-.todo-item:hover {
+.todo-item:hover,
+.todo-item:focus-within {
   transform: translateY(-2px);
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-  border-color: #93c5fd;
+  box-shadow: 0 6px 12px rgba(59, 130, 246, 0.12);
+  border-color: #60a5fa; /* blue-400 */
 }
 
 /* Custom stats styles */
 .stats {
   margin-top: 2rem;
-  padding-top: 1.5rem;
-  border-top: 1px solid #e5e7eb;
+  padding-top: 1.75rem;
+  border-top: 1.5px solid #e0e7ff;
+  font-weight: 500;
+  color: #4b5563; /* gray-600 */
 }
 
 /* Custom empty state styles */
 .empty-state {
   text-align: center;
-  padding: 3rem 0;
-  color: #6b7280;
+  padding: 4rem 0;
+  color: #9ca3af; /* gray-400 */
+  font-style: italic;
+  user-select: none;
 }
 
 /* Custom icon styles */
 .icon {
-  display: inline;
+  display: inline-flex;
   margin-right: 0.75rem;
   color: #3b82f6;
+  font-size: 1.25rem;
+  vertical-align: middle;
 }
 
 /* Custom checkbox styles */
 .checkbox {
-  width: 1.5rem;
-  height: 1.5rem;
+  width: 1.75rem;
+  height: 1.75rem;
   border-radius: 9999px;
-  border-width: 2px;
-  margin-right: 1rem;
+  border-width: 2.5px;
+  margin-right: 1.25rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: all 0.2s ease-in-out;
+  transition: all 0.25s ease-in-out;
+  cursor: pointer;
+  flex-shrink: 0;
 }
 
 .checkbox-completed {
-  background-color: #dcfce7;
-  border-color: #22c55e;
-  color: #22c55e;
+  background-color: #d1fae5; /* green-100 */
+  border-color: #22c55e; /* green-500 */
+  color: #16a34a; /* green-600 */
 }
 
 .checkbox-uncompleted {
-  border-color: #d1d5db;
+  border-color: #cbd5e1; /* gray-300 */
+  color: transparent;
 }
 
 .checkbox-uncompleted:hover {
-  border-color: #3b82f6;
+  border-color: #3b82f6; /* blue-500 */
+  color: #3b82f6;
 }
 
 /* Custom button group styles */
 .button-group {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.75rem;
   opacity: 0;
-  transition: opacity 0.2s ease-in-out;
+  transition: opacity 0.3s ease;
+  user-select: none;
 }
 
-.todo-item:hover .button-group {
+.todo-item:hover .button-group,
+.todo-item:focus-within .button-group {
   opacity: 1;
 }
 
 /* Custom action button styles */
 .action-button {
-  padding: 0.5rem;
-  color: #6b7280;
+  padding: 0.5rem 0.6rem;
+  color: #6b7280; /* gray-500 */
   border-radius: 9999px;
-  transition: all 0.2s ease-in-out;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  user-select: none;
 }
 
-.action-button:hover {
-  color: #2563eb;
-  background-color: #eff6ff;
+.action-button:hover,
+.action-button:focus {
+  color: #2563eb; /* blue-600 */
+  background-color: #dbeafe; /* blue-100 */
+  outline: none;
 }
 
 /* Custom delete button styles */
 .delete-button {
-  padding: 0.5rem;
-  color: #6b7280;
+  padding: 0.5rem 0.6rem;
+  color: #6b7280; /* gray-500 */
   border-radius: 9999px;
-  transition: all 0.2s ease-in-out;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  user-select: none;
 }
 
-.delete-button:hover {
-  color: #dc2626;
-  background-color: #fef2f2;
+.delete-button:hover,
+.delete-button:focus {
+  color: #dc2626; /* red-600 */
+  background-color: #fee2e2; /* red-100 */
+  outline: none;
 }
 
 /* Base Styles */
 .min-h-screen {
   min-height: 100vh;
-  background: linear-gradient(135deg, #f0f9ff 0%, #f5f0ff 100%);
+  background: linear-gradient(135deg, #e0f2fe 0%, #ede9fe 100%);
+  font-smooth: antialiased;
+  -webkit-font-smoothing: antialiased;
 }
 
 /* Card Container */
@@ -199,10 +261,11 @@
   max-width: 42rem;
   margin: 0 auto;
   background: white;
-  border-radius: 1rem;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-  border: 1px solid #e5e7eb;
+  border-radius: 1.25rem;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+  border: 1.5px solid #e0e7ff;
   overflow: hidden;
+  padding: 2rem;
 }
 
 /* Controls */
@@ -230,7 +293,7 @@
 }
 
 .border-t {
-  border-top: 1px solid #e5e7eb;
+  border-top: 1.5px solid #e0e7ff;
 }
 
 /* Responsive Design */
@@ -244,12 +307,12 @@
 .transition-all {
   transition-property: all;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  transition-duration: 150ms;
+  transition-duration: 200ms;
 }
 
 /* Hover effects for buttons */
 .hover\:shadow-md:hover {
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  box-shadow: 0 8px 16px -2px rgba(0, 0, 0, 0.12), 0 4px 8px -2px rgba(0, 0, 0, 0.06);
 }
 
 /* Focus styles for better accessibility */
@@ -258,7 +321,5 @@
 }
 
 .focus\:ring-2:focus {
-  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.5);
+  box-shadow: 0 0 0 2.5px rgba(59, 130, 246, 0.7);
 }
-
-/* Add more styles for other components... */
